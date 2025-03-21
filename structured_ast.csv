@@ -1,0 +1,68 @@
+Node,Parent
+Root,
+Root/Error Type,Root
+Root/Error Type/Logical Error,Root/Error Type
+Root/Error Type/Syntax Error,Root/Error Type
+Root/Faulty Code,Root
+Root/Faulty Code/while(1) { PORTB = 0xFF; },Root/Faulty Code
+"Root/Faulty Code/void loop(
+ Serial.println(""Hello"");
+ }",Root/Faulty Code
+"Root/Faulty Code/int x = 5;
+ int y = x++ + x++;",Root/Faulty Code
+Root/Faulty Code/for(int i = 0; i <= 10; i++) { PORTB = 0xFF; },Root/Faulty Code
+"Root/Faulty Code/int add(int a, int b) { return a - b; }",Root/Faulty Code
+Root/Faulty Code/int x = 10 y = 20;,Root/Faulty Code
+"Root/Faulty Code/if(PORTB = 1) { Serial.println(""ON""); }",Root/Faulty Code
+"Root/Faulty Code/int main() {
+ DDRB = 0xFF 
+ PORTB = 0x01;
+ }",Root/Faulty Code
+"Root/Faulty Code/void setup() 
+ Serial.begin(9600);",Root/Faulty Code
+"Root/Faulty Code/void blink_led() { pinMode(13, OUTPUT) digitalWrite(13, HIGH); }",Root/Faulty Code
+Root/Error Description,Root
+"Root/Error Description/Infinite loop, never exits",Root/Error Description
+"Root/Error Description/Incorrect function declaration, missing `)`",Root/Error Description
+Root/Error Description/Undefined behavior due to multiple post-increments,Root/Error Description
+Root/Error Description/Loop runs one extra time due to `<=` instead of `<`,Root/Error Description
+Root/Error Description/Incorrect operation: subtraction instead of addition,Root/Error Description
+Root/Error Description/Missing semicolon between variable declarations,Root/Error Description
+Root/Error Description/Assignment `=` used instead of comparison `==`,Root/Error Description
+Root/Error Description/Missing semicolon after DDRB = 0xFF,Root/Error Description
+Root/Error Description/Missing curly braces `{}` in setup(),Root/Error Description
+Root/Error Description/Missing semicolon after pinMode(),Root/Error Description
+Root/Corrected Code,Root
+Root/Corrected Code/Use a condition to break the loop when necessary,Root/Corrected Code
+"Root/Corrected Code/void loop() {
+ Serial.println(""Hello"");
+ }",Root/Corrected Code
+"Root/Corrected Code/int x = 5;
+ int y = x + (x + 1); x += 2;",Root/Corrected Code
+Root/Corrected Code/for(int i = 0; i < 10; i++) { PORTB = 0xFF; },Root/Corrected Code
+"Root/Corrected Code/int add(int a, int b) { return a + b; }",Root/Corrected Code
+Root/Corrected Code/int x = 10; int y = 20;,Root/Corrected Code
+"Root/Corrected Code/if(PORTB == 1) { Serial.println(""ON""); }",Root/Corrected Code
+"Root/Corrected Code/int main() {
+ DDRB = 0xFF; 
+ PORTB = 0x01;
+ }",Root/Corrected Code
+"Root/Corrected Code/void setup() { 
+ Serial.begin(9600); 
+ }",Root/Corrected Code
+"Root/Corrected Code/void blink_led() { pinMode(13, OUTPUT); digitalWrite(13, HIGH); }",Root/Corrected Code
+Root/Faulty Code Snippet,Root
+Root/Faulty Code Snippet/nan,Root/Faulty Code Snippet
+Root/Type of Error,Root
+Root/Type of Error/nan,Root/Type of Error
+Root/Tokens,Root
+Root/Tokens/['PORTB'],Root/Tokens
+"Root/Tokens/['void', 'loop', '(', 'Serial', '.', 'println', '(', '""', 'Hello', '""', ')', ';', '}']",Root/Tokens
+"Root/Tokens/['x', 'x']",Root/Tokens
+"Root/Tokens/['i', 'i', 'PORTB']",Root/Tokens
+"Root/Tokens/['int', 'add', '(', 'int', 'a', ',', 'int', 'b', ')', '{', 'return', 'a', '-', 'b', ';', '}']",Root/Tokens
+"Root/Tokens/['int', 'x', '=', '10', 'y', '=', '20', ';']",Root/Tokens
+"Root/Tokens/['PORTB', 'Serial', 'println']",Root/Tokens
+"Root/Tokens/['int', 'main', '(', ')', '{', 'DDRB', '=', '0xFF', 'PORTB', '=', '0x01', ';', '}']",Root/Tokens
+"Root/Tokens/['void', 'setup', '(', ')', 'Serial', '.', 'begin', '(', '9600', ')', ';']",Root/Tokens
+"Root/Tokens/['void', 'blink_led', '(', ')', '{', 'pinMode', '(', '13', ',', 'OUTPUT', ')', 'digitalWrite', '(', '13', ',', 'HIGH', ')', ';', '}']",Root/Tokens
