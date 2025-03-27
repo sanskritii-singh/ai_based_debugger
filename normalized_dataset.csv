@@ -1,0 +1,266 @@
+Error Type,Faulty Code,Error Description,Corrected Code,Faulty Code Snippet,Type of Error,Tokens,Normalized Tokens
+Logical Error,while(1) { PORTB = 0xFF; },"Infinite loop, never exits",Use a condition to break the loop when necessary,,,['PORTB'],['FUNC_1']
+Syntax Error,"void loop(
+ Serial.println(""Hello"");
+ }","Incorrect function declaration, missing `)`","void loop() {
+ Serial.println(""Hello"");
+ }",,,"['void', 'loop', '(', 'Serial', '.', 'println', '(', '""', 'Hello', '""', ')', ';', '}']","['VAR_1', 'VAR_2', '(', 'FUNC_1', '.', 'VAR_3', '(', '""', 'FUNC_2', '""', ')', ';', '}']"
+Logical Error,"int x = 5;
+ int y = x++ + x++;",Undefined behavior due to multiple post-increments,"int x = 5;
+ int y = x + (x + 1); x += 2;",,,"['x', 'x']","['VAR_1', 'VAR_1']"
+Logical Error,while(1) { PORTB = 0xFF; },"Infinite loop, never exits",Use a condition to break the loop when necessary,,,['PORTB'],['FUNC_1']
+Logical Error,for(int i = 0; i <= 10; i++) { PORTB = 0xFF; },Loop runs one extra time due to `<=` instead of `<`,for(int i = 0; i < 10; i++) { PORTB = 0xFF; },,,"['i', 'i', 'PORTB']","['VAR_1', 'VAR_1', 'FUNC_1']"
+Logical Error,"int add(int a, int b) { return a - b; }",Incorrect operation: subtraction instead of addition,"int add(int a, int b) { return a + b; }",,,"['int', 'add', '(', 'int', 'a', ',', 'int', 'b', ')', '{', 'return', 'a', '-', 'b', ';', '}']","['VAR_1', 'VAR_2', '(', 'VAR_1', 'VAR_3', ',', 'VAR_1', 'VAR_4', ')', '{', 'VAR_5', 'VAR_3', '-', 'VAR_4', ';', '}']"
+Logical Error,"int x = 5;
+ int y = x++ + x++;",Undefined behavior due to multiple post-increments,"int x = 5;
+ int y = x + (x + 1); x += 2;",,,"['x', 'x']","['VAR_1', 'VAR_1']"
+Logical Error,"int x = 5;
+ int y = x++ + x++;",Undefined behavior due to multiple post-increments,"int x = 5;
+ int y = x + (x + 1); x += 2;",,,"['x', 'x']","['VAR_1', 'VAR_1']"
+Syntax Error,int x = 10 y = 20;,Missing semicolon between variable declarations,int x = 10; int y = 20;,,,"['int', 'x', '=', '10', 'y', '=', '20', ';']","['VAR_1', 'VAR_2', '=', 'NUM_1', 'VAR_3', '=', 'NUM_2', ';']"
+Logical Error,"if(PORTB = 1) { Serial.println(""ON""); }",Assignment `=` used instead of comparison `==`,"if(PORTB == 1) { Serial.println(""ON""); }",,,"['PORTB', 'Serial', 'println']","['FUNC_1', 'FUNC_2', 'VAR_1']"
+Logical Error,"int add(int a, int b) { return a - b; }",Incorrect operation: subtraction instead of addition,"int add(int a, int b) { return a + b; }",,,"['int', 'add', '(', 'int', 'a', ',', 'int', 'b', ')', '{', 'return', 'a', '-', 'b', ';', '}']","['VAR_1', 'VAR_2', '(', 'VAR_1', 'VAR_3', ',', 'VAR_1', 'VAR_4', ')', '{', 'VAR_5', 'VAR_3', '-', 'VAR_4', ';', '}']"
+Logical Error,for(int i = 0; i <= 10; i++) { PORTB = 0xFF; },Loop runs one extra time due to `<=` instead of `<`,for(int i = 0; i < 10; i++) { PORTB = 0xFF; },,,"['i', 'i', 'PORTB']","['VAR_1', 'VAR_1', 'FUNC_1']"
+Logical Error,while(1) { PORTB = 0xFF; },"Infinite loop, never exits",Use a condition to break the loop when necessary,,,['PORTB'],['FUNC_1']
+Syntax Error,"int main() {
+ DDRB = 0xFF 
+ PORTB = 0x01;
+ }",Missing semicolon after DDRB = 0xFF,"int main() {
+ DDRB = 0xFF; 
+ PORTB = 0x01;
+ }",,,"['int', 'main', '(', ')', '{', 'DDRB', '=', '0xFF', 'PORTB', '=', '0x01', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'FUNC_1', '=', 'NUM_1', 'FUNC_2', '=', 'NUM_2', ';', '}']"
+Logical Error,for(int i = 0; i <= 10; i++) { PORTB = 0xFF; },Loop runs one extra time due to `<=` instead of `<`,for(int i = 0; i < 10; i++) { PORTB = 0xFF; },,,"['i', 'i', 'PORTB']","['VAR_1', 'VAR_1', 'FUNC_1']"
+Syntax Error,int x = 10 y = 20;,Missing semicolon between variable declarations,int x = 10; int y = 20;,,,"['int', 'x', '=', '10', 'y', '=', '20', ';']","['VAR_1', 'VAR_2', '=', 'NUM_1', 'VAR_3', '=', 'NUM_2', ';']"
+Syntax Error,"void loop(
+ Serial.println(""Hello"");
+ }","Incorrect function declaration, missing `)`","void loop() {
+ Serial.println(""Hello"");
+ }",,,"['void', 'loop', '(', 'Serial', '.', 'println', '(', '""', 'Hello', '""', ')', ';', '}']","['VAR_1', 'VAR_2', '(', 'FUNC_1', '.', 'VAR_3', '(', '""', 'FUNC_2', '""', ')', ';', '}']"
+Syntax Error,"void setup() 
+ Serial.begin(9600);",Missing curly braces `{}` in setup(),"void setup() { 
+ Serial.begin(9600); 
+ }",,,"['void', 'setup', '(', ')', 'Serial', '.', 'begin', '(', '9600', ')', ';']","['VAR_1', 'VAR_2', '(', ')', 'FUNC_1', '.', 'VAR_3', '(', 'NUM_1', ')', ';']"
+Syntax Error,"void loop(
+ Serial.println(""Hello"");
+ }","Incorrect function declaration, missing `)`","void loop() {
+ Serial.println(""Hello"");
+ }",,,"['void', 'loop', '(', 'Serial', '.', 'println', '(', '""', 'Hello', '""', ')', ';', '}']","['VAR_1', 'VAR_2', '(', 'FUNC_1', '.', 'VAR_3', '(', '""', 'FUNC_2', '""', ')', ';', '}']"
+Syntax Error,"int main() {
+ DDRB = 0xFF 
+ PORTB = 0x01;
+ }",Missing semicolon after DDRB = 0xFF,"int main() {
+ DDRB = 0xFF; 
+ PORTB = 0x01;
+ }",,,"['int', 'main', '(', ')', '{', 'DDRB', '=', '0xFF', 'PORTB', '=', '0x01', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'FUNC_1', '=', 'NUM_1', 'FUNC_2', '=', 'NUM_2', ';', '}']"
+Logical Error,while(1) { PORTB = 0xFF; },"Infinite loop, never exits",Use a condition to break the loop when necessary,,,['PORTB'],['FUNC_1']
+Syntax Error,"void loop(
+ Serial.println(""Hello"");
+ }","Incorrect function declaration, missing `)`","void loop() {
+ Serial.println(""Hello"");
+ }",,,"['void', 'loop', '(', 'Serial', '.', 'println', '(', '""', 'Hello', '""', ')', ';', '}']","['VAR_1', 'VAR_2', '(', 'FUNC_1', '.', 'VAR_3', '(', '""', 'FUNC_2', '""', ')', ';', '}']"
+Logical Error,"if(PORTB = 1) { Serial.println(""ON""); }",Assignment `=` used instead of comparison `==`,"if(PORTB == 1) { Serial.println(""ON""); }",,,"['PORTB', 'Serial', 'println']","['FUNC_1', 'FUNC_2', 'VAR_1']"
+Logical Error,"int add(int a, int b) { return a - b; }",Incorrect operation: subtraction instead of addition,"int add(int a, int b) { return a + b; }",,,"['int', 'add', '(', 'int', 'a', ',', 'int', 'b', ')', '{', 'return', 'a', '-', 'b', ';', '}']","['VAR_1', 'VAR_2', '(', 'VAR_1', 'VAR_3', ',', 'VAR_1', 'VAR_4', ')', '{', 'VAR_5', 'VAR_3', '-', 'VAR_4', ';', '}']"
+Logical Error,"int x = 5;
+ int y = x++ + x++;",Undefined behavior due to multiple post-increments,"int x = 5;
+ int y = x + (x + 1); x += 2;",,,"['x', 'x']","['VAR_1', 'VAR_1']"
+Logical Error,"int x = 5;
+ int y = x++ + x++;",Undefined behavior due to multiple post-increments,"int x = 5;
+ int y = x + (x + 1); x += 2;",,,"['x', 'x']","['VAR_1', 'VAR_1']"
+Syntax Error,"void setup() 
+ Serial.begin(9600);",Missing curly braces `{}` in setup(),"void setup() { 
+ Serial.begin(9600); 
+ }",,,"['void', 'setup', '(', ')', 'Serial', '.', 'begin', '(', '9600', ')', ';']","['VAR_1', 'VAR_2', '(', ')', 'FUNC_1', '.', 'VAR_3', '(', 'NUM_1', ')', ';']"
+Syntax Error,"int main() {
+ DDRB = 0xFF 
+ PORTB = 0x01;
+ }",Missing semicolon after DDRB = 0xFF,"int main() {
+ DDRB = 0xFF; 
+ PORTB = 0x01;
+ }",,,"['int', 'main', '(', ')', '{', 'DDRB', '=', '0xFF', 'PORTB', '=', '0x01', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'FUNC_1', '=', 'NUM_1', 'FUNC_2', '=', 'NUM_2', ';', '}']"
+Logical Error,"int x = 5;
+ int y = x++ + x++;",Undefined behavior due to multiple post-increments,"int x = 5;
+ int y = x + (x + 1); x += 2;",,,"['x', 'x']","['VAR_1', 'VAR_1']"
+Logical Error,for(int i = 0; i <= 10; i++) { PORTB = 0xFF; },Loop runs one extra time due to `<=` instead of `<`,for(int i = 0; i < 10; i++) { PORTB = 0xFF; },,,"['i', 'i', 'PORTB']","['VAR_1', 'VAR_1', 'FUNC_1']"
+Syntax Error,"int main() {
+ DDRB = 0xFF 
+ PORTB = 0x01;
+ }",Missing semicolon after DDRB = 0xFF,"int main() {
+ DDRB = 0xFF; 
+ PORTB = 0x01;
+ }",,,"['int', 'main', '(', ')', '{', 'DDRB', '=', '0xFF', 'PORTB', '=', '0x01', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'FUNC_1', '=', 'NUM_1', 'FUNC_2', '=', 'NUM_2', ';', '}']"
+Syntax Error,"void loop(
+ Serial.println(""Hello"");
+ }","Incorrect function declaration, missing `)`","void loop() {
+ Serial.println(""Hello"");
+ }",,,"['void', 'loop', '(', 'Serial', '.', 'println', '(', '""', 'Hello', '""', ')', ';', '}']","['VAR_1', 'VAR_2', '(', 'FUNC_1', '.', 'VAR_3', '(', '""', 'FUNC_2', '""', ')', ';', '}']"
+Syntax Error,int x = 10 y = 20;,Missing semicolon between variable declarations,int x = 10; int y = 20;,,,"['int', 'x', '=', '10', 'y', '=', '20', ';']","['VAR_1', 'VAR_2', '=', 'NUM_1', 'VAR_3', '=', 'NUM_2', ';']"
+Logical Error,while(1) { PORTB = 0xFF; },"Infinite loop, never exits",Use a condition to break the loop when necessary,,,['PORTB'],['FUNC_1']
+Logical Error,"if(PORTB = 1) { Serial.println(""ON""); }",Assignment `=` used instead of comparison `==`,"if(PORTB == 1) { Serial.println(""ON""); }",,,"['PORTB', 'Serial', 'println']","['FUNC_1', 'FUNC_2', 'VAR_1']"
+Syntax Error,"void blink_led() { pinMode(13, OUTPUT) digitalWrite(13, HIGH); }",Missing semicolon after pinMode(),"void blink_led() { pinMode(13, OUTPUT); digitalWrite(13, HIGH); }",,,"['void', 'blink_led', '(', ')', '{', 'pinMode', '(', '13', ',', 'OUTPUT', ')', 'digitalWrite', '(', '13', ',', 'HIGH', ')', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'VAR_3', '(', 'NUM_1', ',', 'FUNC_1', ')', 'VAR_4', '(', 'NUM_1', ',', 'FUNC_2', ')', ';', '}']"
+Logical Error,while(1) { PORTB = 0xFF; },"Infinite loop, never exits",Use a condition to break the loop when necessary,,,['PORTB'],['FUNC_1']
+Logical Error,"if(PORTB = 1) { Serial.println(""ON""); }",Assignment `=` used instead of comparison `==`,"if(PORTB == 1) { Serial.println(""ON""); }",,,"['PORTB', 'Serial', 'println']","['FUNC_1', 'FUNC_2', 'VAR_1']"
+Logical Error,"int add(int a, int b) { return a - b; }",Incorrect operation: subtraction instead of addition,"int add(int a, int b) { return a + b; }",,,"['int', 'add', '(', 'int', 'a', ',', 'int', 'b', ')', '{', 'return', 'a', '-', 'b', ';', '}']","['VAR_1', 'VAR_2', '(', 'VAR_1', 'VAR_3', ',', 'VAR_1', 'VAR_4', ')', '{', 'VAR_5', 'VAR_3', '-', 'VAR_4', ';', '}']"
+Syntax Error,int x = 10 y = 20;,Missing semicolon between variable declarations,int x = 10; int y = 20;,,,"['int', 'x', '=', '10', 'y', '=', '20', ';']","['VAR_1', 'VAR_2', '=', 'NUM_1', 'VAR_3', '=', 'NUM_2', ';']"
+Syntax Error,"int main() {
+ DDRB = 0xFF 
+ PORTB = 0x01;
+ }",Missing semicolon after DDRB = 0xFF,"int main() {
+ DDRB = 0xFF; 
+ PORTB = 0x01;
+ }",,,"['int', 'main', '(', ')', '{', 'DDRB', '=', '0xFF', 'PORTB', '=', '0x01', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'FUNC_1', '=', 'NUM_1', 'FUNC_2', '=', 'NUM_2', ';', '}']"
+Syntax Error,"void loop(
+ Serial.println(""Hello"");
+ }","Incorrect function declaration, missing `)`","void loop() {
+ Serial.println(""Hello"");
+ }",,,"['void', 'loop', '(', 'Serial', '.', 'println', '(', '""', 'Hello', '""', ')', ';', '}']","['VAR_1', 'VAR_2', '(', 'FUNC_1', '.', 'VAR_3', '(', '""', 'FUNC_2', '""', ')', ';', '}']"
+Logical Error,"if(PORTB = 1) { Serial.println(""ON""); }",Assignment `=` used instead of comparison `==`,"if(PORTB == 1) { Serial.println(""ON""); }",,,"['PORTB', 'Serial', 'println']","['FUNC_1', 'FUNC_2', 'VAR_1']"
+Syntax Error,"int main() {
+ DDRB = 0xFF 
+ PORTB = 0x01;
+ }",Missing semicolon after DDRB = 0xFF,"int main() {
+ DDRB = 0xFF; 
+ PORTB = 0x01;
+ }",,,"['int', 'main', '(', ')', '{', 'DDRB', '=', '0xFF', 'PORTB', '=', '0x01', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'FUNC_1', '=', 'NUM_1', 'FUNC_2', '=', 'NUM_2', ';', '}']"
+Syntax Error,"int main() {
+ DDRB = 0xFF 
+ PORTB = 0x01;
+ }",Missing semicolon after DDRB = 0xFF,"int main() {
+ DDRB = 0xFF; 
+ PORTB = 0x01;
+ }",,,"['int', 'main', '(', ')', '{', 'DDRB', '=', '0xFF', 'PORTB', '=', '0x01', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'FUNC_1', '=', 'NUM_1', 'FUNC_2', '=', 'NUM_2', ';', '}']"
+Syntax Error,"int main() {
+ DDRB = 0xFF 
+ PORTB = 0x01;
+ }",Missing semicolon after DDRB = 0xFF,"int main() {
+ DDRB = 0xFF; 
+ PORTB = 0x01;
+ }",,,"['int', 'main', '(', ')', '{', 'DDRB', '=', '0xFF', 'PORTB', '=', '0x01', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'FUNC_1', '=', 'NUM_1', 'FUNC_2', '=', 'NUM_2', ';', '}']"
+Logical Error,"int x = 5;
+ int y = x++ + x++;",Undefined behavior due to multiple post-increments,"int x = 5;
+ int y = x + (x + 1); x += 2;",,,"['x', 'x']","['VAR_1', 'VAR_1']"
+Logical Error,"if(PORTB = 1) { Serial.println(""ON""); }",Assignment `=` used instead of comparison `==`,"if(PORTB == 1) { Serial.println(""ON""); }",,,"['PORTB', 'Serial', 'println']","['FUNC_1', 'FUNC_2', 'VAR_1']"
+Syntax Error,"void blink_led() { pinMode(13, OUTPUT) digitalWrite(13, HIGH); }",Missing semicolon after pinMode(),"void blink_led() { pinMode(13, OUTPUT); digitalWrite(13, HIGH); }",,,"['void', 'blink_led', '(', ')', '{', 'pinMode', '(', '13', ',', 'OUTPUT', ')', 'digitalWrite', '(', '13', ',', 'HIGH', ')', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'VAR_3', '(', 'NUM_1', ',', 'FUNC_1', ')', 'VAR_4', '(', 'NUM_1', ',', 'FUNC_2', ')', ';', '}']"
+Syntax Error,"void setup() 
+ Serial.begin(9600);",Missing curly braces `{}` in setup(),"void setup() { 
+ Serial.begin(9600); 
+ }",,,"['void', 'setup', '(', ')', 'Serial', '.', 'begin', '(', '9600', ')', ';']","['VAR_1', 'VAR_2', '(', ')', 'FUNC_1', '.', 'VAR_3', '(', 'NUM_1', ')', ';']"
+Logical Error,for(int i = 0; i <= 10; i++) { PORTB = 0xFF; },Loop runs one extra time due to `<=` instead of `<`,for(int i = 0; i < 10; i++) { PORTB = 0xFF; },,,"['i', 'i', 'PORTB']","['VAR_1', 'VAR_1', 'FUNC_1']"
+Logical Error,"int x = 5;
+ int y = x++ + x++;",Undefined behavior due to multiple post-increments,"int x = 5;
+ int y = x + (x + 1); x += 2;",,,"['x', 'x']","['VAR_1', 'VAR_1']"
+Logical Error,while(1) { PORTB = 0xFF; },"Infinite loop, never exits",Use a condition to break the loop when necessary,,,['PORTB'],['FUNC_1']
+Logical Error,while(1) { PORTB = 0xFF; },"Infinite loop, never exits",Use a condition to break the loop when necessary,,,['PORTB'],['FUNC_1']
+Syntax Error,"int main() {
+ DDRB = 0xFF 
+ PORTB = 0x01;
+ }",Missing semicolon after DDRB = 0xFF,"int main() {
+ DDRB = 0xFF; 
+ PORTB = 0x01;
+ }",,,"['int', 'main', '(', ')', '{', 'DDRB', '=', '0xFF', 'PORTB', '=', '0x01', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'FUNC_1', '=', 'NUM_1', 'FUNC_2', '=', 'NUM_2', ';', '}']"
+Syntax Error,"void setup() 
+ Serial.begin(9600);",Missing curly braces `{}` in setup(),"void setup() { 
+ Serial.begin(9600); 
+ }",,,"['void', 'setup', '(', ')', 'Serial', '.', 'begin', '(', '9600', ')', ';']","['VAR_1', 'VAR_2', '(', ')', 'FUNC_1', '.', 'VAR_3', '(', 'NUM_1', ')', ';']"
+Syntax Error,"int main() {
+ DDRB = 0xFF 
+ PORTB = 0x01;
+ }",Missing semicolon after DDRB = 0xFF,"int main() {
+ DDRB = 0xFF; 
+ PORTB = 0x01;
+ }",,,"['int', 'main', '(', ')', '{', 'DDRB', '=', '0xFF', 'PORTB', '=', '0x01', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'FUNC_1', '=', 'NUM_1', 'FUNC_2', '=', 'NUM_2', ';', '}']"
+Logical Error,"int add(int a, int b) { return a - b; }",Incorrect operation: subtraction instead of addition,"int add(int a, int b) { return a + b; }",,,"['int', 'add', '(', 'int', 'a', ',', 'int', 'b', ')', '{', 'return', 'a', '-', 'b', ';', '}']","['VAR_1', 'VAR_2', '(', 'VAR_1', 'VAR_3', ',', 'VAR_1', 'VAR_4', ')', '{', 'VAR_5', 'VAR_3', '-', 'VAR_4', ';', '}']"
+Syntax Error,"int main() {
+ DDRB = 0xFF 
+ PORTB = 0x01;
+ }",Missing semicolon after DDRB = 0xFF,"int main() {
+ DDRB = 0xFF; 
+ PORTB = 0x01;
+ }",,,"['int', 'main', '(', ')', '{', 'DDRB', '=', '0xFF', 'PORTB', '=', '0x01', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'FUNC_1', '=', 'NUM_1', 'FUNC_2', '=', 'NUM_2', ';', '}']"
+Logical Error,"int x = 5;
+ int y = x++ + x++;",Undefined behavior due to multiple post-increments,"int x = 5;
+ int y = x + (x + 1); x += 2;",,,"['x', 'x']","['VAR_1', 'VAR_1']"
+Logical Error,for(int i = 0; i <= 10; i++) { PORTB = 0xFF; },Loop runs one extra time due to `<=` instead of `<`,for(int i = 0; i < 10; i++) { PORTB = 0xFF; },,,"['i', 'i', 'PORTB']","['VAR_1', 'VAR_1', 'FUNC_1']"
+Logical Error,while(1) { PORTB = 0xFF; },"Infinite loop, never exits",Use a condition to break the loop when necessary,,,['PORTB'],['FUNC_1']
+Logical Error,"if(PORTB = 1) { Serial.println(""ON""); }",Assignment `=` used instead of comparison `==`,"if(PORTB == 1) { Serial.println(""ON""); }",,,"['PORTB', 'Serial', 'println']","['FUNC_1', 'FUNC_2', 'VAR_1']"
+Syntax Error,"void setup() 
+ Serial.begin(9600);",Missing curly braces `{}` in setup(),"void setup() { 
+ Serial.begin(9600); 
+ }",,,"['void', 'setup', '(', ')', 'Serial', '.', 'begin', '(', '9600', ')', ';']","['VAR_1', 'VAR_2', '(', ')', 'FUNC_1', '.', 'VAR_3', '(', 'NUM_1', ')', ';']"
+Logical Error,"if(PORTB = 1) { Serial.println(""ON""); }",Assignment `=` used instead of comparison `==`,"if(PORTB == 1) { Serial.println(""ON""); }",,,"['PORTB', 'Serial', 'println']","['FUNC_1', 'FUNC_2', 'VAR_1']"
+Syntax Error,"void loop(
+ Serial.println(""Hello"");
+ }","Incorrect function declaration, missing `)`","void loop() {
+ Serial.println(""Hello"");
+ }",,,"['void', 'loop', '(', 'Serial', '.', 'println', '(', '""', 'Hello', '""', ')', ';', '}']","['VAR_1', 'VAR_2', '(', 'FUNC_1', '.', 'VAR_3', '(', '""', 'FUNC_2', '""', ')', ';', '}']"
+Syntax Error,int x = 10 y = 20;,Missing semicolon between variable declarations,int x = 10; int y = 20;,,,"['int', 'x', '=', '10', 'y', '=', '20', ';']","['VAR_1', 'VAR_2', '=', 'NUM_1', 'VAR_3', '=', 'NUM_2', ';']"
+Logical Error,while(1) { PORTB = 0xFF; },"Infinite loop, never exits",Use a condition to break the loop when necessary,,,['PORTB'],['FUNC_1']
+Logical Error,"int add(int a, int b) { return a - b; }",Incorrect operation: subtraction instead of addition,"int add(int a, int b) { return a + b; }",,,"['int', 'add', '(', 'int', 'a', ',', 'int', 'b', ')', '{', 'return', 'a', '-', 'b', ';', '}']","['VAR_1', 'VAR_2', '(', 'VAR_1', 'VAR_3', ',', 'VAR_1', 'VAR_4', ')', '{', 'VAR_5', 'VAR_3', '-', 'VAR_4', ';', '}']"
+Syntax Error,int x = 10 y = 20;,Missing semicolon between variable declarations,int x = 10; int y = 20;,,,"['int', 'x', '=', '10', 'y', '=', '20', ';']","['VAR_1', 'VAR_2', '=', 'NUM_1', 'VAR_3', '=', 'NUM_2', ';']"
+Logical Error,"int add(int a, int b) { return a - b; }",Incorrect operation: subtraction instead of addition,"int add(int a, int b) { return a + b; }",,,"['int', 'add', '(', 'int', 'a', ',', 'int', 'b', ')', '{', 'return', 'a', '-', 'b', ';', '}']","['VAR_1', 'VAR_2', '(', 'VAR_1', 'VAR_3', ',', 'VAR_1', 'VAR_4', ')', '{', 'VAR_5', 'VAR_3', '-', 'VAR_4', ';', '}']"
+Logical Error,"int x = 5;
+ int y = x++ + x++;",Undefined behavior due to multiple post-increments,"int x = 5;
+ int y = x + (x + 1); x += 2;",,,"['x', 'x']","['VAR_1', 'VAR_1']"
+Logical Error,for(int i = 0; i <= 10; i++) { PORTB = 0xFF; },Loop runs one extra time due to `<=` instead of `<`,for(int i = 0; i < 10; i++) { PORTB = 0xFF; },,,"['i', 'i', 'PORTB']","['VAR_1', 'VAR_1', 'FUNC_1']"
+Logical Error,for(int i = 0; i <= 10; i++) { PORTB = 0xFF; },Loop runs one extra time due to `<=` instead of `<`,for(int i = 0; i < 10; i++) { PORTB = 0xFF; },,,"['i', 'i', 'PORTB']","['VAR_1', 'VAR_1', 'FUNC_1']"
+Syntax Error,"int main() {
+ DDRB = 0xFF 
+ PORTB = 0x01;
+ }",Missing semicolon after DDRB = 0xFF,"int main() {
+ DDRB = 0xFF; 
+ PORTB = 0x01;
+ }",,,"['int', 'main', '(', ')', '{', 'DDRB', '=', '0xFF', 'PORTB', '=', '0x01', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'FUNC_1', '=', 'NUM_1', 'FUNC_2', '=', 'NUM_2', ';', '}']"
+Syntax Error,"void loop(
+ Serial.println(""Hello"");
+ }","Incorrect function declaration, missing `)`","void loop() {
+ Serial.println(""Hello"");
+ }",,,"['void', 'loop', '(', 'Serial', '.', 'println', '(', '""', 'Hello', '""', ')', ';', '}']","['VAR_1', 'VAR_2', '(', 'FUNC_1', '.', 'VAR_3', '(', '""', 'FUNC_2', '""', ')', ';', '}']"
+Syntax Error,int x = 10 y = 20;,Missing semicolon between variable declarations,int x = 10; int y = 20;,,,"['int', 'x', '=', '10', 'y', '=', '20', ';']","['VAR_1', 'VAR_2', '=', 'NUM_1', 'VAR_3', '=', 'NUM_2', ';']"
+Logical Error,"if(PORTB = 1) { Serial.println(""ON""); }",Assignment `=` used instead of comparison `==`,"if(PORTB == 1) { Serial.println(""ON""); }",,,"['PORTB', 'Serial', 'println']","['FUNC_1', 'FUNC_2', 'VAR_1']"
+Logical Error,while(1) { PORTB = 0xFF; },"Infinite loop, never exits",Use a condition to break the loop when necessary,,,['PORTB'],['FUNC_1']
+Syntax Error,"void blink_led() { pinMode(13, OUTPUT) digitalWrite(13, HIGH); }",Missing semicolon after pinMode(),"void blink_led() { pinMode(13, OUTPUT); digitalWrite(13, HIGH); }",,,"['void', 'blink_led', '(', ')', '{', 'pinMode', '(', '13', ',', 'OUTPUT', ')', 'digitalWrite', '(', '13', ',', 'HIGH', ')', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'VAR_3', '(', 'NUM_1', ',', 'FUNC_1', ')', 'VAR_4', '(', 'NUM_1', ',', 'FUNC_2', ')', ';', '}']"
+Syntax Error,"void setup() 
+ Serial.begin(9600);",Missing curly braces `{}` in setup(),"void setup() { 
+ Serial.begin(9600); 
+ }",,,"['void', 'setup', '(', ')', 'Serial', '.', 'begin', '(', '9600', ')', ';']","['VAR_1', 'VAR_2', '(', ')', 'FUNC_1', '.', 'VAR_3', '(', 'NUM_1', ')', ';']"
+Logical Error,"int add(int a, int b) { return a - b; }",Incorrect operation: subtraction instead of addition,"int add(int a, int b) { return a + b; }",,,"['int', 'add', '(', 'int', 'a', ',', 'int', 'b', ')', '{', 'return', 'a', '-', 'b', ';', '}']","['VAR_1', 'VAR_2', '(', 'VAR_1', 'VAR_3', ',', 'VAR_1', 'VAR_4', ')', '{', 'VAR_5', 'VAR_3', '-', 'VAR_4', ';', '}']"
+Logical Error,"int add(int a, int b) { return a - b; }",Incorrect operation: subtraction instead of addition,"int add(int a, int b) { return a + b; }",,,"['int', 'add', '(', 'int', 'a', ',', 'int', 'b', ')', '{', 'return', 'a', '-', 'b', ';', '}']","['VAR_1', 'VAR_2', '(', 'VAR_1', 'VAR_3', ',', 'VAR_1', 'VAR_4', ')', '{', 'VAR_5', 'VAR_3', '-', 'VAR_4', ';', '}']"
+Syntax Error,"void blink_led() { pinMode(13, OUTPUT) digitalWrite(13, HIGH); }",Missing semicolon after pinMode(),"void blink_led() { pinMode(13, OUTPUT); digitalWrite(13, HIGH); }",,,"['void', 'blink_led', '(', ')', '{', 'pinMode', '(', '13', ',', 'OUTPUT', ')', 'digitalWrite', '(', '13', ',', 'HIGH', ')', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'VAR_3', '(', 'NUM_1', ',', 'FUNC_1', ')', 'VAR_4', '(', 'NUM_1', ',', 'FUNC_2', ')', ';', '}']"
+Syntax Error,"int main() {
+ DDRB = 0xFF 
+ PORTB = 0x01;
+ }",Missing semicolon after DDRB = 0xFF,"int main() {
+ DDRB = 0xFF; 
+ PORTB = 0x01;
+ }",,,"['int', 'main', '(', ')', '{', 'DDRB', '=', '0xFF', 'PORTB', '=', '0x01', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'FUNC_1', '=', 'NUM_1', 'FUNC_2', '=', 'NUM_2', ';', '}']"
+Logical Error,while(1) { PORTB = 0xFF; },"Infinite loop, never exits",Use a condition to break the loop when necessary,,,['PORTB'],['FUNC_1']
+Logical Error,for(int i = 0; i <= 10; i++) { PORTB = 0xFF; },Loop runs one extra time due to `<=` instead of `<`,for(int i = 0; i < 10; i++) { PORTB = 0xFF; },,,"['i', 'i', 'PORTB']","['VAR_1', 'VAR_1', 'FUNC_1']"
+Syntax Error,"void setup() 
+ Serial.begin(9600);",Missing curly braces `{}` in setup(),"void setup() { 
+ Serial.begin(9600); 
+ }",,,"['void', 'setup', '(', ')', 'Serial', '.', 'begin', '(', '9600', ')', ';']","['VAR_1', 'VAR_2', '(', ')', 'FUNC_1', '.', 'VAR_3', '(', 'NUM_1', ')', ';']"
+Logical Error,"if(PORTB = 1) { Serial.println(""ON""); }",Assignment `=` used instead of comparison `==`,"if(PORTB == 1) { Serial.println(""ON""); }",,,"['PORTB', 'Serial', 'println']","['FUNC_1', 'FUNC_2', 'VAR_1']"
+Logical Error,"int x = 5;
+ int y = x++ + x++;",Undefined behavior due to multiple post-increments,"int x = 5;
+ int y = x + (x + 1); x += 2;",,,"['x', 'x']","['VAR_1', 'VAR_1']"
+Syntax Error,"void blink_led() { pinMode(13, OUTPUT) digitalWrite(13, HIGH); }",Missing semicolon after pinMode(),"void blink_led() { pinMode(13, OUTPUT); digitalWrite(13, HIGH); }",,,"['void', 'blink_led', '(', ')', '{', 'pinMode', '(', '13', ',', 'OUTPUT', ')', 'digitalWrite', '(', '13', ',', 'HIGH', ')', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'VAR_3', '(', 'NUM_1', ',', 'FUNC_1', ')', 'VAR_4', '(', 'NUM_1', ',', 'FUNC_2', ')', ';', '}']"
+Syntax Error,"void blink_led() { pinMode(13, OUTPUT) digitalWrite(13, HIGH); }",Missing semicolon after pinMode(),"void blink_led() { pinMode(13, OUTPUT); digitalWrite(13, HIGH); }",,,"['void', 'blink_led', '(', ')', '{', 'pinMode', '(', '13', ',', 'OUTPUT', ')', 'digitalWrite', '(', '13', ',', 'HIGH', ')', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'VAR_3', '(', 'NUM_1', ',', 'FUNC_1', ')', 'VAR_4', '(', 'NUM_1', ',', 'FUNC_2', ')', ';', '}']"
+Syntax Error,int x = 10 y = 20;,Missing semicolon between variable declarations,int x = 10; int y = 20;,,,"['int', 'x', '=', '10', 'y', '=', '20', ';']","['VAR_1', 'VAR_2', '=', 'NUM_1', 'VAR_3', '=', 'NUM_2', ';']"
+Syntax Error,"void loop(
+ Serial.println(""Hello"");
+ }","Incorrect function declaration, missing `)`","void loop() {
+ Serial.println(""Hello"");
+ }",,,"['void', 'loop', '(', 'Serial', '.', 'println', '(', '""', 'Hello', '""', ')', ';', '}']","['VAR_1', 'VAR_2', '(', 'FUNC_1', '.', 'VAR_3', '(', '""', 'FUNC_2', '""', ')', ';', '}']"
+Logical Error,while(1) { PORTB = 0xFF; },"Infinite loop, never exits",Use a condition to break the loop when necessary,,,['PORTB'],['FUNC_1']
+Logical Error,"if(PORTB = 1) { Serial.println(""ON""); }",Assignment `=` used instead of comparison `==`,"if(PORTB == 1) { Serial.println(""ON""); }",,,"['PORTB', 'Serial', 'println']","['FUNC_1', 'FUNC_2', 'VAR_1']"
+Syntax Error,"void loop(
+ Serial.println(""Hello"");
+ }","Incorrect function declaration, missing `)`","void loop() {
+ Serial.println(""Hello"");
+ }",,,"['void', 'loop', '(', 'Serial', '.', 'println', '(', '""', 'Hello', '""', ')', ';', '}']","['VAR_1', 'VAR_2', '(', 'FUNC_1', '.', 'VAR_3', '(', '""', 'FUNC_2', '""', ')', ';', '}']"
+Syntax Error,"void loop(
+ Serial.println(""Hello"");
+ }","Incorrect function declaration, missing `)`","void loop() {
+ Serial.println(""Hello"");
+ }",,,"['void', 'loop', '(', 'Serial', '.', 'println', '(', '""', 'Hello', '""', ')', ';', '}']","['VAR_1', 'VAR_2', '(', 'FUNC_1', '.', 'VAR_3', '(', '""', 'FUNC_2', '""', ')', ';', '}']"
+Syntax Error,"void blink_led() { pinMode(13, OUTPUT) digitalWrite(13, HIGH); }",Missing semicolon after pinMode(),"void blink_led() { pinMode(13, OUTPUT); digitalWrite(13, HIGH); }",,,"['void', 'blink_led', '(', ')', '{', 'pinMode', '(', '13', ',', 'OUTPUT', ')', 'digitalWrite', '(', '13', ',', 'HIGH', ')', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'VAR_3', '(', 'NUM_1', ',', 'FUNC_1', ')', 'VAR_4', '(', 'NUM_1', ',', 'FUNC_2', ')', ';', '}']"
+Syntax Error,"void blink_led() { pinMode(13, OUTPUT) digitalWrite(13, HIGH); }",Missing semicolon after pinMode(),"void blink_led() { pinMode(13, OUTPUT); digitalWrite(13, HIGH); }",,,"['void', 'blink_led', '(', ')', '{', 'pinMode', '(', '13', ',', 'OUTPUT', ')', 'digitalWrite', '(', '13', ',', 'HIGH', ')', ';', '}']","['VAR_1', 'VAR_2', '(', ')', '{', 'VAR_3', '(', 'NUM_1', ',', 'FUNC_1', ')', 'VAR_4', '(', 'NUM_1', ',', 'FUNC_2', ')', ';', '}']"
